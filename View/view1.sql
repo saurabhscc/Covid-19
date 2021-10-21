@@ -21,6 +21,29 @@ DROP VIEW Statewise_forigner_confirmed;
 
 
 
+/* create view/virtual table */
+CREATE VIEW Vaccines_Administered AS    
+SELECT TotalDosesAdministered,Covaxin_DosesAdministered,CoviShield_DosesAdministered,SputnikV_DosesAdministered,TotalIndividualsVaccinated  
+from  covid_vaccine_statewise;
+
+/*dispaly view using select statement */  
+SELECT * FROM Vaccines_Administered;
+
+
+/* Alter view/virtual table */
+ALTER VIEW Vaccines_Administered AS    
+SELECT State,Updated_On,TotalDosesAdministered,Covaxin_DosesAdministered,CoviShield_DosesAdministered,SputnikV_DosesAdministered,TotalIndividualsVaccinated  
+from  covid_vaccine_statewise;
+
+/*dispaly view using select statement */  
+SELECT * FROM Vaccines_Administered;
+
+
+/* Drop view/virtual table */
+DROP VIEW Vaccines_Administered;
+
+
+
 
 /* create view/virtual table */
 CREATE VIEW Confirmed_MH_Cases AS    
