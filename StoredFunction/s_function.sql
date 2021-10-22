@@ -58,3 +58,25 @@ SELECT State_UnionTerritory,ConfirmedIndianNational,Deaths, Mortality_rate(Death
 /*Display the stored function in database */
 SHOW FUNCTION STATUS WHERE db = 'covid_19_india'
 
+
+
+/* creating function */
+DELIMITER $$
+create function Infection_zone(Positive int )
+returns text
+deterministic
+begin
+declare Infection_zone text;
+if Positive > 15000 then set Infection_zone='Total_containment';
+elseif( Positive >=100 and  Positive <=15000) then set Infection_zone='Semi_containment';
+elseif( Positive <100 ) then set Infection_zone='Non_containment';
+end if;
+return(Infection_zone);
+end$$
+DELIMITER;   
+
+/*calling function*/
+select Date,State,Infection_zone(Positive) from statewisetestingdetails;
+
+/*Display the stored function in database */
+SHOW FUNCTION STATUS WHERE db = 'covid_19_india'
