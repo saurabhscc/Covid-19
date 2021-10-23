@@ -80,3 +80,27 @@ select Date,State,Infection_zone(Positive) from statewisetestingdetails;
 
 /*Display the stored function in database */
 SHOW FUNCTION STATUS WHERE db = 'covid_19_india'
+
+
+/* creating function */
+DELIMITER //
+CREATE FUNCTION get_daily_cases(area varchar(64), olddate varchar(10), newdate varchar(10))
+RETURNS integer
+DETERMINISTIC
+BEGIN
+DECLARE confirmed_old int;
+DECLARE confirmed_new int;
+    
+Select Confirmed into confirmed_old FROM covid_19.covid_19_india where Date = olddate AND State_UnionTerritory=area;
+Select Confirmed into confirmed_new FROM covid_19.covid_19_india where Date = newdate AND State_UnionTerritory=area;
+    
+return (confirmed_new - confirmed_old);
+END 
+//
+DELIMITER ; 
+
+
+/* execute function check diffn state and dates*/
+SELECT get_daily_cases('Punjab','03-08-2021','04-08-2021') as difference;
+
+SELECT get_daily_cases('West Bengal','10-08-2021','11-08-2021') as difference;
