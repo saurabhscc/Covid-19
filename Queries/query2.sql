@@ -89,3 +89,13 @@ FROM covid_19_india
 WHERE State_UnionTerritory = 'Maharashtra'  
 AND Confirmed > 0
 ORDER BY Deaths DESC ;
+
+/*Retrive data using where , and,order by */
+SELECT * FROM
+(SELECT * FROM
+    covid_vaccine_statewise where State = "West Bengal" and TotalDosesAdministered is not null
+    ORDER BY TotalDosesAdministered DESC
+     LIMIT 1) AS tbl
+ORDER BY TotalDosesAdministered DESC
+LIMIT 1;
+
