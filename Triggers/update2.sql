@@ -5,7 +5,7 @@ BEFORE UPDATE
 ON statewisetestingdetails FOR EACH ROW  
 BEGIN  
     DECLARE error_msg VARCHAR(255);  
-    SET error_msg = ('The new Negative cannot be greater make sure about Male_DosesAdministered ');  
+    SET error_msg = ('The new Negative cannot be greater make sure about Total sample ');  
     IF new.Negative > old.Negative  THEN  
     SIGNAL SQLSTATE '45000'   
     SET MESSAGE_TEXT = error_msg;  
