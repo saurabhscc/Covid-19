@@ -38,6 +38,16 @@ mysql> describe persons;
 mysql> drop table persons;
 Query OK, 0 rows affected (0.10 sec)
 
+mysql> show tables;
++------------------+
+| Tables_in_coders |
++------------------+
+| customers        |
+| student          |
+| student1         |
+| student_1        |
++------------------+
+4 rows in set (0.00 sec)
 
 mysql> CREATE TABLE Persons (
     ->     ID int NOT NULL ,
@@ -150,6 +160,7 @@ mysql> describe persons;
 | Age       | int          | YES  |     | NULL    |       |
 +-----------+--------------+------+-----+---------+-------+
 4 rows in set (0.03 sec)
+
 mysql> CREATE TABLE Orders (
     ->     OrderID int NOT NULL,
     ->     OrderNumber int NOT NULL,
@@ -297,7 +308,7 @@ mysql> CREATE TABLE Orders (
     ->     OrderNumber int NOT NULL,
     -> PRIMARY KEY (OrderID)
     -> );
-ERROR 1050 (42S01): Table 'orders' already exists
+
 mysql> drop table orders;
 Query OK, 0 rows affected (0.10 sec)
 
@@ -392,9 +403,9 @@ mysql> describe Employee;
 mysql> insert into Employee values(1,'sam','neel','jmroad','mumbai');
 Query OK, 1 row affected (0.03 sec)
 insert into Employee values(2,'sammy','rowling','Mkroad','mumbai');
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.03 sec)
 insert into Employee values(3,'samy','king','Mkstreet','mumbai');
-Query OK, 1 row affected (0.01 sec)
+Query OK, 1 row affected (0.03 sec)
 
 mysql> select * from Employee;
 +------------+----------+-----------+----------+--------+
